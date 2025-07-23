@@ -45,7 +45,7 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 5px 10px 20px 10px rgba(125, 51, 154, 0.3)
+    box-shadow: 5px 10px 12px 5px rgba(125, 51, 154, 0.3)
 }
 
 .card:hover {
