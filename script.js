@@ -4,6 +4,7 @@ const map = document.getElementById('map');
 const filter = document.getElementById('filter');
 const reduce = document.getElementById('reduce');
 
+// Função para mostrar todos os produtos
 function showAll(products) {
     let myCard = "";
     products.forEach(options => {
@@ -22,8 +23,10 @@ function showAll(products) {
     card.innerHTML = myCard;
 }
 
+// Evento para mostrar todos os produtos
 forEach.addEventListener('click', () => showAll(menuOptions));
 
+// Evento para aplicar desconto aos produtos
 map.addEventListener('click', () => {
     const discount = menuOptions.map(options => ({
         ...options,
@@ -32,21 +35,25 @@ map.addEventListener('click', () => {
     showAll(discount);
 });
 
+// Evento para filtrar os produtos veganos
 filter.addEventListener('click', () => {
     const vegan = menuOptions.filter(options => options.vegan === true);
     showAll(vegan);
 });
 
+// Array para armazenar os produtos no carrinho
 const productCart = [];
 
+// Função para adicionar um produto ao carrinho
 function addToCart(index) {
     const selectedProduct = menuOptions[index];
     productCart.push(selectedProduct);
-    console.log('Produto adicionado ao carrinho:', selectedProduct.name);
+    alert(`Produto adicionado ao carrinho: ${selectedProduct.name}`);
     console.log('Carrinho atual:', productCart);
     updateCartTotal();
 }
 
+// Função para atualizar o total do carrinho
 function updateCartTotal() {
     const total = productCart.reduce((acc, item) => acc + item.price, 0);
     const cartDisplay = `
@@ -65,4 +72,5 @@ function updateCartTotal() {
     card.innerHTML = cartDisplay;
 }
 
+// Evento para atualizar o total do carrinho
 reduce.addEventListener('click', () => updateCartTotal());
