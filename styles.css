@@ -58,9 +58,27 @@ img {
     border-radius: 5px;
 }
 
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .price {
     font-weight: bold;
     text-align: right;
     margin-top: 10px;
     color: rgb(51, 193, 38);
+}
+
+.add-cart {
+    background-color: rgb(51, 193, 38);
+    color: #000000;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+    margin-top: 10px;
 }
