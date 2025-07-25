@@ -1,5 +1,5 @@
 const forEach = document.getElementById('forEach');
-const card = document.querySelector('.container');
+let card = document.querySelector('.container');
 const map = document.getElementById('map');
 const filter = document.getElementById('filter');
 const reduce = document.getElementById('reduce');
@@ -8,8 +8,8 @@ const reduce = document.getElementById('reduce');
 function showAll(products) {
     let myCard = "";
     products.forEach(options => {
-        myCard += 
-        `
+        myCard +=
+            `
             <div class="card">
                 <img src="${options.src}" alt="${options.name}">
                 <h2>${options.name}</h2>
@@ -56,19 +56,22 @@ function addToCart(index) {
 // Função para atualizar o total do carrinho
 function updateCartTotal() {
     const total = productCart.reduce((acc, item) => acc + item.price, 0);
-    const cartDisplay = `
-        <div class="card">
+    const cartDisplay = productCart.length > 0 ? `
+    <div class="cart-total">
             <h2>Carrinho de Compras</h2>
             ${productCart.map(item => `
                 <div class="cart-item">
+                    <img src="${item.src}" alt="${item.name}">
                     <p>${item.name}</p>
                     <p>${item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                 </div>
             `).join('')}
-            <h3>Total do Carrinho:</h3>
-            <p class="price">${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-        </div>
-    `;
+            <div class="total-price">
+                <h3>Total do Carrinho:</h3>
+                <p class="price">${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+            </div>
+    </div>
+    ` : 'Carrinho vazio';
     card.innerHTML = cartDisplay;
 }
 
